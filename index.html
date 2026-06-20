@@ -4,11 +4,25 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>CDI animado</title>
+    <title>CDI animado - Seleção de Unidade</title>
     <link href="https://fonts.googleapis.com/css2?family=Droid+Serif&display=swap" rel="stylesheet">
     <link href="https://fonts.cdnfonts.com/css/chunkfive" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     <link rel="stylesheet" href="style.css">
+
+    <!-- ESTILOS EXCLUSIVOS DESTA PÁGINA -->
+    <style>
+        .content .link-container {
+            width: 320px; /* <--- AUMENTE OU DIMINUA AQUI */
+            max-width: 90vw; /* Trava de segurança para não vazar da tela em celulares pequenos */
+            justify-content: center; /* Mantém o ícone e o texto centralizados no novo espaço */
+        }
+
+        .content .link-container a {
+            flex-grow: 0; /* Evita que o link empurre o ícone para a borda */
+            margin-left: 10px;
+        }
+    </style>
 </head>
 
 <body>
@@ -21,85 +35,31 @@
     <div class="blur-light light1"></div>
     <div class="blur-light light2"></div>
 
-    <!--<div class="text">
-        <em>
-            <h2>Peça sua pizza <br> diferenciada!</h2>
-        </em>
-    </div>-->
-
     <!-- Conteúdo principal -->
     <div class="content">
-        <div class="link-container">
-            <i id="icon-wp" class="fab fa-whatsapp fa" style="color: #fff;"></i>
-            <a href="https://contate.me/5571999220937" target="_blank" style="margin-right: 10px;">Whatsapp</a>
+        
+        <div style="text-align: center; margin-bottom: 25px;">
+            <h2 style="color: #fff; font-family: 'Chunkfive', 'Droid Serif', serif; font-size: 22px; letter-spacing: 1px; text-shadow: 2px 2px 4px rgba(0,0,0,0.5);">
+                Escolha a sua unidade:
+            </h2>
         </div>
 
         <div class="link-container">
-            <i id="icon-ig" class="fab fa-instagram fa" style="color: #fff;"></i>
-            <a href="https://www.instagram.com/tchefrangofritoperiperi" target="_blank">Nosso insta</a>
+            <i class="fas fa-location-dot" style="color: #fff;"></i>
+            <a href="periperi.html">Unidade Periperi</a>
         </div>
 
         <div class="link-container">
-            <i id="icon-lc" class="fas fa-map-marker-alt" style="color: #fff;"></i>
-            <a href="https://maps.app.goo.gl/WQVzpuLkJex5t3ab7" target="_blank">Localização</a>
+            <i class="fas fa-location-dot" style="color: #fff;"></i>
+            <a href="vconquista.html">Vitória da Conquista</a>
         </div>
-
-        <div class="link-container">
-            <i id="icon-lc" class="fas fa-star" style="color: #fff;"></i>
-            <a href="https://www.google.com/maps/place/Tch%C3%AA+Frango+Frito+PERIPERI/@-12.8650406,-38.4711951,17z/data=!4m8!3m7!1s0x716110066a160df:0xb461c2d841e6deef!8m2!3d-12.8650406!4d-38.4711951!9m1!1b1!16s%2Fg%2F11xd8f5926?entry=ttu&g_ep=EgoyMDI2MDYxNi4wIKXMDSoASAFQAw%3D%3D"
-                target="_blank">
-                Nos avalie
-            </a>
-        </div>
-
-        <div class="link-container">
-            <i id="icon-pd" class="fas fa-receipt" style="color: #fff;"></i>
-            <a href="https://l.instagram.com/?u=https%3A%2F%2Floja.neemo.com.br%2Fsabordosulperiperi%3Futm_source%3Dig%26utm_medium%3Dsocial%26utm_content%3Dlink_in_bio%26fbclid%3DPAZXh0bgNhZW0CMTEAc3J0YwZhcHBfaWQPOTM2NjE5NzQzMzkyNDU5AAGnkDdw-Jr-YKcm60sHh6hTa-NQ2HCtlBRrcDS2_RLs8XxcADTFaN7Mtldyiro_aem_FcUBDXgpOZQHvUt7RjRgXQ&e=AUA7nsWVQxdUaopEc-g6rh1k12E2FOtAQ4jcxnJO0zCv9-VCoxXXDM8QrZfDZtGvNlrAVLvDyWMn9oWSNKEp7vps6R6twpTIKGexytCnLJ1Vx4VPS9meJeFxnwc2x8RLHzZWPU4" target="_blank">Peça aqui</a>
-        </div>
+        
     </div>
 
-    <!--<div class="boas-praticas">
-        <a href="https://drive.google.com/file/d/1SEHZvFw3fsg7jPuPa2e64fjTDSwXE0pN/view">Boas práticas</a>
-        <i class="fas fa-hand-pointer"></i>
-    </div>-->
-
-    <!-- Tela de introdução com logo -->
-    <!--<div id="splash">
-        <img src="logo-ecocaixas.png" alt="Eco Caixas" id="logo">
-    </div>-->
-
-
-    <!-- DESCOMENTAR PARA APLICAR EFEITO DE OBJETOS QUE CAEM
-    <img src="./obj/hamburger1.png" alt="" class="folha folha1">
-    <img src="./obj/tomate1.png" alt="" class="folha folha2">
-    <img src="./obj/hamburger3.png" alt="" class="folha folha3">
-    <img src="./obj/alface1.png" alt="" class="folha folha4">-->
-
-    <!--CONTAINER COM VÍDEO DE FUNDO-->
     <video autoplay muted loop playsinline id="bgVideo">
-        <!--ALTERE O NÚMERO DE "pizzaria5" PARA O NUMERO DO VÍDEO DESEJADO-->>
         <source src="./bg/bg-pizzaria.mp4" type="video/mp4">
         Seu navegador não suporta vídeos em HTML5.
     </video>
-
-    <!-- TELA DE ENTRADA COM BOTÃO -->
-    <!--<div id="startScreen" class="start-screen">
-        <button id="enterBtn">
-            <i class="fas fa-pizza-slice"></i> Menu da Pizzaria
-        </button>
-    </div>-->
-
-    <!-- SPLASH COM A LOGO -->
-    <!--<div id="splash" class="splash">
-        <img id="logo" src="logo.png" alt="Logo" />
-    </div>-->
-
-    <!-- ÁUDIO -->
-    <!--<audio id="meuAudio" src="/audio/musica1.mp3" preload="auto"></audio>-->
-
-    <!--<div class="shape" id="shape1"></div>
-    <div class="shape" id="shape2"></div>-->
-
 
     <script src="./script.js"></script>
 </body>
