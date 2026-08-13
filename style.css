@@ -39,21 +39,33 @@ body {
     z-index: -1;
 }
 
+/* =====================================
+   NOVA LOGO (BOTÃO FLUTUANTE)
+   ===================================== */
 .logo {
-    width: 100%;
-    text-align: center;
-    padding: 10px;
-    margin-top: 50px;
-    position: relative;
+    position: fixed;
+    bottom: 25px;
+    right: 25px;
+    width: auto;
+    padding: 0;
+    margin-top: 0;
+    text-align: right;
     z-index: 1000;
+    cursor: pointer;
+    transition: transform 0.3s ease;
 }
 
-/*ALTERA AS CORES DO CONTORNO DA LOGO*/
 .logo img {
-    width: 200px;
-    margin-top: 20px;
-    /*filter: drop-shadow(0 0 10px #f4ee04) drop-shadow(0 0 5px #f4ee04) drop-shadow(0 0 5px #f4ee04);*/
+    width: 70px; /* Tamanho reduzido para agir como botão */
+    margin-top: 0;
+    filter: drop-shadow(0px 4px 6px rgba(0,0,0,0.5));
 }
+
+.logo:hover {
+    transform: scale(1.1); /* Efeito de clique/foco */
+}
+
+/* ===================================== */
 
 .blur-light {
     position: absolute;
@@ -91,8 +103,15 @@ h2 {
     text-shadow: 3px 3px 0 #930fec;
 }
 
+/* =====================================
+   NOVO CONTENT (POSICIONADO NA PARTE INFERIOR)
+   ===================================== */
 .content {
-    position: relative;
+    position: absolute;
+    bottom: 12%; /* Ajuste a altura aqui */
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100%;
     z-index: 1;
     color: #fff;
     text-align: center;
@@ -101,10 +120,10 @@ h2 {
     align-items: center;
     flex-direction: column;
     gap: 10px;
-    margin-top: 20px;
+    margin-bottom: 40px; /* Espaço inferior */
 }
 
-/*ESTILIZAÇÃO DOS BOTÕES*/
+/*ESTILIZAÇÃO DOS BOTÕES COM OPACIDADE*/
 .link-container {
     background-color: #ec9f0f;
     background-image: radial-gradient(#b10000 0.5px, transparent 0.5px);
@@ -117,14 +136,22 @@ h2 {
     align-items: center;
     gap: 8px;
     font-family: 'Poppins', serif;
+    opacity: 0.70; /* Deixa transparente */
+    transition: opacity 0.3s ease, transform 0.3s ease;
     /*DESCOMENTAR CASO USE BORDAS*/
     /*border: 4px solid #f4ee04;*/
+}
+
+.link-container:hover {
+    opacity: 1; /* Remove a transparência ao passar o mouse */
+    transform: scale(1.05);
 }
 
 .link-container>a {
     text-decoration: none;
     color: #fff;
 }
+/* ===================================== */
 
 /*LOGO ECO*/
 #splash {
