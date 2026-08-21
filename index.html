@@ -10,51 +10,212 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     <link rel="stylesheet" href="style.css">
 
-    <!-- ESTILOS EXCLUSIVOS DESTA PÁGINA -->
     <style>
         .content .link-container {
-            width: 320px; /* <--- AUMENTE OU DIMINUA AQUI */
-            max-width: 90vw; /* Trava de segurança para não vazar da tela em celulares pequenos */
-            justify-content: center; /* Mantém o ícone e o texto centralizados no novo espaço */
+            width: 320px;
+            max-width: 90vw;
+            justify-content: center;
+            cursor: pointer;
+            transition: transform 0.2s ease, background 0.2s ease;
         }
 
-        .content .link-container a {
-            flex-grow: 0; /* Evita que o link empurre o ícone para a borda */
+        .content .link-container:hover {
+            transform: scale(1.03);
+        }
+
+        .content .link-container a,
+        .content .link-container span {
+            flex-grow: 0;
             margin-left: 10px;
+            color: #fff;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        /* --- Estilização do Modal --- */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background: rgba(0, 0, 0, 0.7);
+            backdrop-filter: blur(8px);
+            display: none;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .modal-overlay.active {
+            display: flex;
+            opacity: 1;
+        }
+
+        .modal-card {
+            background: rgba(20, 20, 20, 0.85);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            border-radius: 16px;
+            padding: 30px 20px;
+            width: 360px;
+            max-width: 90vw;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
+            position: relative;
+            transform: scale(0.9);
+            transition: transform 0.3s ease;
+            text-align: center;
+        }
+
+        .modal-overlay.active .modal-card {
+            transform: scale(1);
+        }
+
+        .modal-close-btn {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: transparent;
+            border: none;
+            color: #fff;
+            font-size: 1.3rem;
+            cursor: pointer;
+            opacity: 0.7;
+            transition: opacity 0.2s;
+        }
+
+        .modal-close-btn:hover {
+            opacity: 1;
+        }
+
+        .modal-title {
+            color: #fff;
+            font-family: 'Chunkfive', 'Droid Serif', serif;
+            font-size: 20px;
+            margin-bottom: 20px;
+            letter-spacing: 1px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+
+        .modal-links {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            align-items: center;
+        }
+
+        .modal-links .link-container {
+            width: 100%;
+            margin: 0;
+            background: rgba(255, 255, 255, 0.08);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 8px;
+            padding: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            transition: all 0.2s ease;
+        }
+
+        .modal-links .link-container:hover {
+            background: rgba(255, 255, 255, 0.2);
         }
     </style>
 </head>
 
 <body>
 
-    <!-- Luzes de fundo -->
     <div class="blur-light light1"></div>
     <div class="blur-light light2"></div>
 
-    <!-- Conteúdo principal -->
     <div class="content">
-        
         <div style="text-align: center; margin-bottom: 25px;">
             <h2 style="color: #fff; font-family: 'Chunkfive', 'Droid Serif', serif; font-size: 22px; letter-spacing: 1px; text-shadow: 2px 2px 4px rgba(0,0,0,0.5); opacity: 0.85;">
-                Escolha a sua unidade:
+                Escolha o seu Estado:
             </h2>
         </div>
 
-        <div class="link-container">
-            <i class="fas fa-location-dot" style="color: #fff;"></i>
-            <a href="periperi.html">Unidade Periperi</a>
+        <div class="link-container" onclick="openModal('modal-ba')">
+            <i class="fas fa-map-location-dot" style="color: #fff;"></i>
+            <span>Unidades BA</span>
         </div>
 
-        <div class="link-container">
-            <i class="fas fa-location-dot" style="color: #fff;"></i>
-            <a href="vconquista.html">Vitória da Conquista</a>
+        <div class="link-container" onclick="openModal('modal-sc')">
+            <i class="fas fa-map-location-dot" style="color: #fff;"></i>
+            <span>Unidades SC</span>
         </div>
-        
+
+        <div class="link-container" onclick="openModal('modal-rs')">
+            <i class="fas fa-map-location-dot" style="color: #fff;"></i>
+            <span>Unidades RS</span>
+        </div>
     </div>
 
-    <!-- Logo convertida em botão flutuante -->
+    <div class="modal-overlay" id="modal-ba">
+        <div class="modal-card">
+            <button class="modal-close-btn" onclick="closeModal('modal-ba')">
+                <i class="fas fa-xmark"></i>
+            </button>
+            <h3 class="modal-title">Unidades - Bahia</h3>
+            <div class="modal-links">
+                <a href="periperi.html" class="link-container">
+                    <i class="fas fa-location-dot" style="color: #fff;"></i>
+                    <span>Unidade Periperi</span>
+                </a>
+                <a href="https://maps.app.goo.gl/wq4xGFsTZ66fK9pc9?g_st=iw" class="link-container">
+                    <i class="fas fa-location-dot" style="color: #fff;"></i>
+                    <span>Cajazeiras</span>
+                </a>
+                <a href="vconquista.html" class="link-container">
+                    <i class="fas fa-location-dot" style="color: #fff;"></i>
+                    <span>Vitória da Conquista</span>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal-overlay" id="modal-sc">
+        <div class="modal-card">
+            <button class="modal-close-btn" onclick="closeModal('modal-sc')">
+                <i class="fas fa-xmark"></i>
+            </button>
+            <h3 class="modal-title">Unidades - Santa Catarina</h3>
+            <div class="modal-links">
+                <a href="https://maps.apple/p/-AiQYduzYnGQJA" class="link-container">
+                    <i class="fas fa-location-dot" style="color: #fff;"></i>
+                    <span>Balneário Gaivota</span>
+                </a>
+                <a href="https://maps.apple/p/UCimk3U4WQ.50N" class="link-container">
+                    <i class="fas fa-location-dot" style="color: #fff;"></i>
+                    <span>Araranguá</span>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal-overlay" id="modal-rs">
+        <div class="modal-card">
+            <button class="modal-close-btn" onclick="closeModal('modal-rs')">
+                <i class="fas fa-xmark"></i>
+            </button>
+            <h3 class="modal-title">Unidades - Rio Grande do Sul</h3>
+            <div class="modal-links">
+                <a href="https://maps.apple/p/DQjz3QPn33qL.n" class="link-container">
+                    <i class="fas fa-location-dot" style="color: #fff;"></i>
+                    <span>Caxias do Sul - Lourdes</span>
+                </a>
+                <a href="https://maps.app.goo.gl/Psf8g8ZestsD3QCRA?g_st=iw" class="link-container">
+                    <i class="fas fa-location-dot" style="color: #fff;"></i>
+                    <span>Caxias do Sul - Desvio Rizzo</span>
+                </a>
+            </div>
+        </div>
+    </div>
+
     <div class="logo">
-        <a href="#"> <!-- Coloque o link desejado aqui (ex: index.html) -->
+        <a href="#">
             <img src="./logo.png" alt="logo">
         </a>
     </div>
@@ -64,6 +225,37 @@
         Seu navegador não suporta vídeos em HTML5.
     </video>
 
+    <script>
+        function openModal(modalId) {
+            const modal = document.getElementById(modalId);
+            if (modal) {
+                modal.classList.add('active');
+            }
+        }
+
+        function closeModal(modalId) {
+            const modal = document.getElementById(modalId);
+            if (modal) {
+                modal.classList.remove('active');
+            }
+        }
+
+        // Fechar ao clicar fora da janela (no fundo escuro)
+        window.addEventListener('click', (e) => {
+            if (e.target.classList.contains('modal-overlay')) {
+                e.target.classList.remove('active');
+            }
+        });
+
+        // Fechar com a tecla ESC
+        window.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') {
+                document.querySelectorAll('.modal-overlay').forEach(modal => {
+                    modal.classList.remove('active');
+                });
+            }
+        });
+    </script>
     <script src="./script.js"></script>
 </body>
 
